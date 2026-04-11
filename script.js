@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarComponente("footer", "componentes/footer.html");
 
     cargarVista("introduccion");
+    irAPagina(0);
 });
 
 document.addEventListener("click", (e) => {
@@ -58,7 +59,7 @@ document.addEventListener("click", (e) => {
 
 
 const paginas = [
-    { id: "introduccion", anchor: "aprenderas", titulo: "👋 Aprenderás...", header: "Para iniciar: conoce los objetivos del proyecto" },
+    { id: "introduccion", anchor: "aprenderas", titulo: "👋 Aprenderás...", header: "Para iniciar: conoce prerrequisitos y configuración" },
     { id: "introduccion", anchor: "requisitos", titulo: "🛠️ Requisitos", header: "Antes de comenzar: prepara tu entorno de desarrollo" },
     { id: "introduccion", anchor: "estructura", titulo: "📁 Estructura", header: "Explora cómo está organizado el proyecto" },
 
