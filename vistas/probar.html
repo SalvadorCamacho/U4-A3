@@ -1,0 +1,221 @@
+<div class="container-fluid px-3 px-md-4 py-4 py-md-5">
+
+    <!-- HEADER -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold display-6">Prueba Final y Puesta en Marcha</h2>
+        <p class="text-muted">
+            Integra todos los componentes del sistema y ejecuta el flujo completo:
+            <strong>Prolog + Backend + Frontend</strong> funcionando en tiempo real.
+        </p>
+    </div>
+
+    <!-- INTRO -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            <h5 class="fw-bold mb-3">🧠 ¿Qué lograrás en este paso?</h5>
+
+            <p>
+                En esta etapa final conectarás todo el ecosistema: generación de datos,
+                servidor Prolog y la interfaz web interactiva.
+            </p>
+
+            <ul class="mb-0">
+                <li>🔗 Integración completa del sistema</li>
+                <li>⚡ Comunicación en tiempo real (Frontend ↔ Backend)</li>
+                <li>📊 Visualización dinámica con gráficas</li>
+                <li>🧠 Evaluación de lógica inteligente en acción</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PASOS -->
+    <!-- PASOS -->
+    <div class="card shadow-sm border-0 mb-5">
+        <div class="card-body">
+            <h5 class="fw-bold mb-4">⚙️ 1 Ejecución del sistema</h5>
+
+            <div class="row g-4">
+
+                <!-- PASO 1 -->
+                <div class="col-md-6">
+                    <div class="p-3 border rounded bg-light h-100 position-relative">
+
+                        <h6 class="fw-bold">1️⃣ Iniciar Servidor</h6>
+
+                        <!-- BOTÓN COPIAR -->
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
+                            onclick="copiarCodigo('cmd1', this)">
+                            📋 Copiar
+                        </button>
+
+                        <div id="cmd1" class="code-soft p-2 rounded small mb-2 bg-dark text-white">
+                            swipl server.pl
+                        </div>
+
+
+                        <p class="small text-muted">
+                            ✔ Prolog levanta el servidor HTTP en el puerto 8080
+                        </p>
+
+
+                    </div>
+                </div>
+
+                <!-- PASO 2 (ANTES ERA 3) -->
+                <div class="col-md-6">
+                    <div class="p-3 border rounded bg-light h-100">
+                        <h6 class="fw-bold">2️⃣ Abrir Interfaz Web</h6>
+
+                        <div class="alert alert-success small p-2 mb-0">
+                            Da clic en la consola el enlace del servidor activo: http://localhost:8080
+                            o alternativamente desde un navegador pega este enlace.
+                        </div>
+
+                        <div class="col-lg-6 text-center m-3">
+                            <img src="/imagenes/abrir_pagina.jpg" class="img-fluid rounded shadow border img-clickable"
+                                width="300px" height="200px"
+                                onclick="abrirImagen(this.src)">
+                        </div>
+
+                        <p class="small text-muted mt-2">
+                            ✔ Interfaz lista para interactuar con el backend
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- GUÍA VISUAL -->
+    <h5 class="fw-bold mb-4">🧭 2 Flujo de uso del sistema</h5>
+
+    <!-- BLOQUE A -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+
+            <h6 class="fw-bold">📁 A. Carga del Dataset</h6>
+
+            <p class="text-muted">
+                El primer paso es alimentar el sistema con datos. Selecciona el archivo CSV
+                generado y presiona <strong>Analizar</strong>.
+            </p>
+
+            <ul class="small text-muted">
+                <li>✔ Se envía al endpoint <code>/upload</code></li>
+                <li>✔ Prolog convierte el CSV en hechos</li>
+                <li>✔ Se almacenan en memoria dinámica</li>
+            </ul>
+
+            <div class="alert alert-info border-0 small">
+                💡 Este proceso equivale a "entrenar" el sistema lógico.
+            </div>
+
+        </div>
+
+        <div class="col-lg-6 text-center">
+            <img src="/imagenes/data.jpg" class="img-fluid rounded shadow border img-clickable"
+                width="400px" height="700px"
+                onclick="abrirImagen(this.src)">
+        </div>
+    </div>
+
+    <!-- BLOQUE B -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6 order-lg-2">
+
+            <h6 class="fw-bold">📊 B. Predicción y visualización</h6>
+
+            <p class="text-muted">
+                Ingresa valores en el formulario y presiona <strong>Consultar</strong>.
+                El frontend envía datos a Prolog y recibe una respuesta en JSON.
+            </p>
+
+            <ul class="small text-muted">
+                <li>✔ Llamada a <code>/predict</code></li>
+                <li>✔ Cálculo del puntaje en Prolog</li>
+                <li>✔ Render dinámico con Chart.js</li>
+            </ul>
+
+            <p class="small text-muted">
+                ⚡ La gráfica se actualiza sin recargar la página.
+            </p>
+
+        </div>
+
+        <div class="col-lg-6 text-center">
+            <img src="/imagenes/modelo.jpg" class="img-fluid rounded shadow border img-clickable"
+                onclick="abrirImagen(this.src)">
+        </div>
+    </div>
+
+    <!-- BLOQUE C -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+
+            <h6 class="fw-bold">🧠 C. Transparencia del modelo</h6>
+
+            <p class="text-muted">
+                El sistema incluye un modal que explica la lógica utilizada para calcular el riesgo.
+            </p>
+
+            <ul class="small text-muted">
+                <li>✔ Explicación de fórmula</li>
+                <li>✔ Interpretación del puntaje</li>
+                <li>✔ Transparencia algorítmica</li>
+            </ul>
+
+        </div>
+
+        <div class="col-lg-6 text-center">
+            <img src="/imagenes/modal.jpg" class="img-fluid rounded shadow border img-clickable"
+                onclick="abrirImagen(this.src)">
+        </div>
+    </div>
+
+    <!-- RETO -->
+    <div class="card bg-dark text-white shadow-lg border-0 mt-5">
+        <div class="card-body p-4 p-md-5">
+
+            <h4 class="fw-bold text-warning mb-4">🎯 3. Reto: Ajuste del modelo</h4>
+
+            <p>
+                Ahora modificarás la lógica del sistema para cambiar el comportamiento del algoritmo.
+            </p>
+
+            <div class="bg-black p-3 rounded small mb-4">
+                Puntaje is D.edad*0.2 + D.fuma*35 + D.alcohol*15 - D.ejercicio*25.
+            </div>
+
+            <h6 class="fw-bold text-info">Tu misión:</h6>
+
+            <ul class="small">
+                <li>✔ Reducir impacto del ejercicio a <strong>10</strong></li>
+                <li>✔ Si edad &gt; 60 → alcohol = <strong>30</strong></li>
+            </ul>
+
+            <div class="alert alert-secondary mt-4 border-0 small">
+                💡 Edita <strong>server.pl</strong>, guarda cambios y reinicia el servidor.
+            </div>
+
+            <div class="mt-4 p-3 bg-light text-dark rounded small">
+                <strong>Pregunta:</strong><br>
+                ¿Cómo cambian las gráficas después del ajuste?
+                ¿Es más difícil obtener riesgo bajo?
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="imgModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark border-0">
+            <div class="modal-body text-center p-0">
+                <img id="imgPreview" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>

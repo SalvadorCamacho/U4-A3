@@ -1,0 +1,349 @@
+<div class="container-fluid px-3 px-md-4 py-4 py-md-5">
+
+    <!-- TÍTULO -->
+    <h2 class="fw-bold text-center mb-4">
+        Servidor y lógica del sistema (Backend)
+    </h2>
+
+    <!-- INTRO -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+
+            <h5 class="fw-bold mb-3">🚀 El corazón del sistema</h5>
+
+            <p>
+                En este paso construirás el servidor backend en Prolog, el cual será capaz de
+                recibir datos desde el frontend, procesarlos y responder como una API web.
+            </p>
+
+            <ul class="mb-3">
+                <li>🌐 Manejo de peticiones HTTP</li>
+                <li>📊 Procesamiento de datos CSV</li>
+                <li>🧠 Aplicación de lógica inteligente</li>
+                <li>📈 Respuestas en formato JSON</li>
+            </ul>
+
+            <div class="alert alert-warning border-0 mb-0">
+                ⚠️ Archivo principal: <strong>server.pl</strong>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- DESCRIPCIÓN GENERAL -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+
+            <h5 class="fw-bold mb-3">🧩 ¿Qué construimos aquí?</h5>
+
+            <p>
+                Este módulo transforma Prolog en un servidor web funcional. Define rutas,
+                procesa datos y ejecuta lógica para responder dinámicamente al usuario.
+            </p>
+
+            <ul class="mb-0">
+                <li>📡 API REST básica</li>
+                <li>🧠 Motor lógico</li>
+                <li>📁 Manejo de archivos</li>
+                <li>📊 Generación de resultados</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- BLOQUE 1 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">📦 Librerías y base de datos dinámica</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2"
+                            onclick="copiarCodigo('code1', this)">📋 Copiar</button>
+
+<pre id="code1" class="bg-dark text-light p-3 rounded small">
+:- use_module(library(http/thread_httpd)).
+:- use_module(library(http/http_dispatch)).
+:- use_module(library(http/http_json)).
+:- use_module(library(http/http_files)).
+:- use_module(library(http/http_parameters)).
+:- use_module(library(http/http_client)).
+
+:- dynamic dato/5.
+</pre>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="small text-muted">
+
+                        <p><strong>¿Qué hace este bloque?</strong></p>
+                        <p>
+                            Configura el entorno del servidor cargando librerías necesarias
+                            para HTTP, rutas y JSON.
+                        </p>
+
+                        <ul>
+                            <li>Servidor web en Prolog</li>
+                            <li>Manejo de rutas</li>
+                            <li>Soporte JSON</li>
+                            <li>Base dinámica en memoria</li>
+                        </ul>
+
+                        <div class="doc-link">
+                            🔗 <a href="https://www.swi-prolog.org/pldoc/man?section=httpserver" target="_blank">
+                                Documentación HTTP Server
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BLOQUE 2 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">🚀 Inicio del servidor</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2"
+                            onclick="copiarCodigo('code2', this)">📋 Copiar</button>
+
+<pre id="code2" class="bg-dark text-light p-3 rounded small">
+:- initialization(start_server).
+
+start_server :-
+    http_server(http_dispatch, [port(8080)]),
+    writeln('-------------------------------------------'),
+    writeln('Servidor activo en http://localhost:8080'),
+    writeln('-------------------------------------------').
+</pre>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="small text-muted">
+
+                        <p><strong>¿Qué hace este bloque?</strong></p>
+                        <p>
+                            Inicia automáticamente el servidor cuando se ejecuta el archivo.
+                        </p>
+
+                        <ul>
+                            <li>Arranque automático</li>
+                            <li>Servidor HTTP activo</li>
+                        </ul>
+
+                        <div class="doc-link">
+                            🔗 <a href="https://www.swi-prolog.org/pldoc/doc_for?object=http_server/2" target="_blank">
+                                http_server/2
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BLOQUE 3 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">📥 Subida y procesamiento de datos</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2"
+                            onclick="copiarCodigo('code4', this)">📋 Copiar</button>
+
+<pre id="code4" class="bg-dark text-light p-3 rounded small">
+upload_handler(Request) :-
+    catch(
+        (
+            http_read_data(Request, Data, []),
+            ( member(data=CSVAtom, Data) ->
+                atom_string(CSVAtom, CSVString),
+                split_string(CSVString, "\n", "\r", [_|Filas]),
+                retractall(dato(_,_,_,_,_)),
+                maplist(procesar_fila, Filas),
+                reply_json(_{status:"ok"})
+            ;   reply_json(_{status:"no_file"})
+            )
+        ),
+        _,
+        reply_json(_{status:"error"})
+    ).
+
+procesar_fila("") :- !.
+procesar_fila(Fila) :-
+    split_string(Fila, ",", "", [E,F,A,Ej,RStr]),
+    number_string(Edad, E),
+    number_string(Fuma, F),
+    number_string(Alcohol, A),
+    number_string(Ejercicio, Ej),
+    atom_string(Riesgo, RStr),
+    assert(dato(Edad, Fuma, Alcohol, Ejercicio, Riesgo)).
+</pre>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="small text-muted">
+
+                        <p><strong>¿Qué hace este bloque?</strong></p>
+
+                        <p>
+                            Convierte un archivo CSV en hechos Prolog almacenados dinámicamente.
+                        </p>
+
+                        <ul>
+                            <li>Lectura de archivos</li>
+                            <li>Transformación a datos lógicos</li>
+                            <li>Uso de assert/retract</li>
+                        </ul>
+
+                        <div class="doc-link">
+                            🔗 <a href="https://www.swi-prolog.org/pldoc/doc_for?object=http_read_data/3" target="_blank">
+                                http_read_data/3
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BLOQUE 4 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">🧠 Predicción de riesgo</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2"
+                            onclick="copiarCodigo('code5', this)">📋 Copiar</button>
+
+<pre id="code5" class="bg-dark text-light p-3 rounded small">
+predict_handler(Request) :-
+    http_read_json_dict(Request, D),
+    Puntaje is D.edad*0.2 + D.fuma*35 + D.alcohol*15 - D.ejercicio*25,
+    
+    ( Puntaje > 65 -> R = alto
+    ; Puntaje > 35 -> R = medio
+    ; R = bajo
+    ),
+    reply_json(_{riesgo:R, puntaje:Puntaje}).
+</pre>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="small text-muted">
+
+                        <p><strong>¿Qué hace este bloque?</strong></p>
+
+                        <p>
+                            Calcula el riesgo mediante una fórmula ponderada y lógica condicional.
+                        </p>
+
+                        <ul>
+                            <li>Evaluación matemática</li>
+                            <li>Clasificación por umbrales</li>
+                            <li>Respuesta JSON</li>
+                        </ul>
+
+                        <div class="doc-link">
+                            🔗 <a href="https://www.swi-prolog.org/pldoc/doc_for?object=http_read_json_dict/2" target="_blank">
+                                http_read_json_dict/2
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BLOQUE 5 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">📊 Estadísticas automáticas</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2"
+                            onclick="copiarCodigo('code6', this)">📋 Copiar</button>
+
+<pre id="code6" class="bg-dark text-light p-3 rounded small">
+stats_handler(_) :-
+    findall(E, dato(E,_,_,_,_), Edades),
+    ( Edades == [] ->
+        reply_json(_{error:"No hay datos"})
+    ;   promedio(Edades, Prom),
+        conteo(alto, A),
+        conteo(medio, M),
+        conteo(bajo, B),
+        reply_json(_{
+            promedioEdad: Prom,
+            riesgo: _{alto:A, medio:M, bajo:B}
+        })
+    ).
+
+promedio(L, P) :- sum_list(L, S), length(L, N), P is S / N.
+conteo(R, N) :- findall(1, dato(_,_,_,_,R), L), length(L, N).
+</pre>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="small text-muted">
+
+                        <p><strong>¿Qué hace este bloque?</strong></p>
+
+                        <p>
+                            Genera estadísticas a partir de los datos almacenados.
+                        </p>
+
+                        <ul>
+                            <li>Promedio de edades</li>
+                            <li>Conteo por categoría</li>
+                            <li>Análisis en tiempo real</li>
+                        </ul>
+
+                        <div class="doc-link">
+                            🔗 <a href="https://www.swi-prolog.org/pldoc/doc_for?object=findall/3" target="_blank">
+                                findall/3
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FINAL -->
+    <div class="alert alert-success mt-4 border-0 shadow-sm">
+        🎉 Has construido un backend completo en Prolog capaz de funcionar como API inteligente.
+    </div>
+
+</div>

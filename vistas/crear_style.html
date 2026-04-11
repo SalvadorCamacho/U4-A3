@@ -1,0 +1,256 @@
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+
+        
+    <!-- TÍTULO -->
+    <h2 class="fw-bold text-center mb-4">
+        Estilos del sistema (CSS)
+    </h2>
+       
+        <p>
+            En esta sección definimos los estilos visuales de la aplicación (varios estilos ya están trabajados en Boostrap -notar-).
+            Se utiliza un enfoque minimalista para mantener claridad y buena experiencia de usuario.
+        </p>
+
+        <ul class="mb-3">
+            <li>🧼 Diseño limpio y moderno</li>
+            <li>📱 Adaptabilidad responsive</li>
+            <li>🎯 Enfoque en legibilidad</li>
+            <li>📊 Optimización de visualización</li>
+        </ul>
+
+        <div class="alert alert-warning border-0 mb-0">
+            ⚠️ Este archivo corresponde a: <strong>web/style.css</strong>
+        </div>
+
+    </div>
+</div>
+
+<!-- BLOQUE 1 -->
+<div class="card shadow-sm mb-3">
+    <div class="card-body">
+
+        <h6 class="fw-bold">🧱 Base global del layout</h6>
+
+        <div class="row">
+
+            <!-- CÓDIGO -->
+            <div class="col-lg-6">
+                <button class="btn btn-sm btn-light float-end mb-2"
+                        onclick="copiarCodigo('css1', this)">📋 Copiar</button>
+
+<pre id="css1" class="bg-dark text-light p-3 rounded small">
+/* =========================
+   BASE MINIMALISTA
+========================= */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    background: #eef2f7;
+}
+</pre>
+            </div>
+
+            <!-- EXPLICACIÓN -->
+            <div class="col-lg-6">
+                <div class="small text-muted">
+
+                    <p><strong>¿Qué hace este bloque?</strong></p>
+                    <p>
+                        Define el comportamiento base de la página. Se asegura que el layout ocupe
+                        toda la pantalla y elimina el scroll horizontal innecesario.
+                    </p>
+
+                    <ul>
+                        <li><strong>height: 100%</strong>: ocupa toda la altura</li>
+                        <li><strong>overflow-x: hidden</strong>: evita scroll lateral</li>
+                        <li><strong>background</strong>: color suave moderno</li>
+                    </ul>
+
+                    <div class="doc-link">
+                        <span>🔗</span>
+                        <a href="https://developer.mozilla.org/es/docs/Web/CSS/overflow" target="_blank">
+                            Propiedad overflow
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- BLOQUE 2 -->
+<div class="card shadow-sm mb-3">
+    <div class="card-body">
+
+        <h6 class="fw-bold">🧩 Estilo de tarjetas (Cards)</h6>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <button class="btn btn-sm btn-light float-end mb-2"
+                        onclick="copiarCodigo('css2', this)">📋 Copiar</button>
+
+<pre id="css2" class="bg-dark text-light p-3 rounded small">
+/* =========================
+   CARDS (solo ajuste visual)
+========================= */
+.card {
+    border-radius: 12px;
+}
+</pre>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="small text-muted">
+
+                    <p><strong>¿Qué hace este bloque?</strong></p>
+                    <p>
+                        Mejora el aspecto visual de las tarjetas usando bordes redondeados,
+                        alineándose con tendencias modernas de diseño UI.
+                    </p>
+
+                    <ul>
+                        <li>Diseño más amigable</li>
+                        <li>Consistencia visual</li>
+                        <li>Mejor UX</li>
+                    </ul>
+
+                    <div class="doc-link">
+                        <span>🔗</span>
+                        <a href="https://developer.mozilla.org/es/docs/Web/CSS/border-radius" target="_blank">
+                            border-radius
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- BLOQUE 3 -->
+<div class="card shadow-sm mb-3">
+    <div class="card-body">
+
+        <h6 class="fw-bold">📊 Canvas responsivo</h6>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <button class="btn btn-sm btn-light float-end mb-2"
+                        onclick="copiarCodigo('css3', this)">📋 Copiar</button>
+
+<pre id="css3" class="bg-dark text-light p-3 rounded small">
+/* =========================
+   CANVAS RESPONSIVO
+========================= */
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+</pre>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="small text-muted">
+
+                    <p><strong>¿Qué hace este bloque?</strong></p>
+                    <p>
+                        Asegura que las gráficas se adapten correctamente al tamaño del contenedor,
+                        especialmente en dispositivos móviles.
+                    </p>
+
+                    <ul>
+                        <li>Gráficas fluidas</li>
+                        <li>Evita desbordamientos</li>
+                        <li>Mejor visualización</li>
+                    </ul>
+
+                    <div class="doc-link">
+                        <span>🔗</span>
+                        <a href="https://www.chartjs.org/docs/latest/configuration/responsive.html" target="_blank">
+                            Chart.js Responsive
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- BLOQUE 4 -->
+<div class="card shadow-sm mb-3">
+    <div class="card-body">
+
+        <h6 class="fw-bold">📝 Estilos de texto</h6>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <button class="btn btn-sm btn-light float-end mb-2"
+                        onclick="copiarCodigo('css4', this)">📋 Copiar</button>
+
+<pre id="css4" class="bg-dark text-light p-3 rounded small">
+/* =========================
+   TEXTOS
+========================= */
+#resultado {
+    text-align: center;
+    font-weight: 600;
+}
+
+#descripcionGrafica {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+</pre>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="small text-muted">
+
+                    <p><strong>¿Qué hace este bloque?</strong></p>
+                    <p>
+                        Define la apariencia del texto de resultados y descripciones para mejorar
+                        la claridad visual del usuario.
+                    </p>
+
+                    <ul>
+                        <li>Texto centrado</li>
+                        <li>Jerarquía visual</li>
+                        <li>Colores suaves</li>
+                    </ul>
+
+                    <div class="doc-link">
+                        <span>🔗</span>
+                        <a href="https://developer.mozilla.org/es/docs/Web/CSS/font-weight" target="_blank">
+                            font-weight
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="alert alert-success mt-4 border-0 shadow-sm">
+    🎉 Has definido un estilo visual limpio y profesional:
+    <ul class="mb-0 mt-2">
+        <li>Diseño minimalista</li>
+        <li>Interfaz responsiva</li>
+        <li>Mejor experiencia de usuario</li>
+    </ul>
+</div>

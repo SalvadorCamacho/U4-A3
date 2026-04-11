@@ -1,0 +1,181 @@
+<div class="container-fluid px-3 px-md-4 py-4 py-md-5" id="main-content">
+
+    <!-- INTRODUCCIÓN -->
+    <div id="introduccion" class="mb-5">
+
+        <h2 class="fw-bolder display-6 fs-3 fs-md-2 text-center">
+            U4-A3 – Programación Lógica con Estructuras Dinámicas y Números
+        </h2>
+        <div class="mb-4"></div>
+
+        <h2 class="h5 h-md-3 fw-bold mb-3 text-center">
+            "Mini Plataforma de Ciencia de Datos con Prolog + Web"
+        </h2>
+
+        <div class="card shadow-sm border-0 my-4 bg-white">
+            <div class="card-body p-3 p-md-4">
+                <h3 class="h6 h-md-3 fw-bold mb-3 text-center">
+                    Prerrequisitos y configuración del entorno de desarrollo
+                </h3>
+                <p class="text-secondary small small-md fs-6">
+                    Para el éxito de este proyecto, es fundamental asegurar que el entorno de desarrollo cuente con
+                    todas las herramientas necesarias. El desarrollo de sistemas híbridos requiere una configuración que
+                    soporte tanto el motor lógico como el servidor de archivos y la lógica del cliente.
+
+                </p>
+            </div>
+        </div>
+
+        <h3 class="mt-5 mb-4 fw-bold fs-5 fs-md-4" id="aprenderas">¿Qué aprenderás/aplicarás?</h3>
+
+        <div class="row row-cols-1 row-cols-sm-2 g-3">
+
+            <div class="col">
+               <div class="alert alert-success d-flex align-items-center mb-0 border-0 shadow-sm" role="alert">
+                    ✅ Subida de archivo CSV a través de interfaz gráfica
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="alert alert-success d-flex align-items-center mb-0 border-0 shadow-sm" role="alert">
+                    ✅ Backend Prolog (API REST)
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="alert alert-success d-flex align-items-center mb-0 border-0 shadow-sm" role="alert">
+                    ✅ Dashboard web responsivo
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="alert alert-success d-flex align-items-center mb-0 border-0 shadow-sm" role="alert">
+                    ✅ Gráfica dinámica
+                </div>
+            </div>
+            <div class="col">
+                <div class="alert alert-success d-flex align-items-center mb-0 border-0 shadow-sm" role="alert">
+                    ✅ Estadísticas automáticas en base al modelo predictivo
+                </div>
+            </div>
+            <div class="col">
+                <div class="alert alert-success d-flex align-items-center mb-0 border-0 shadow-sm" role="alert">
+                    ✅ Interacción con usuario a través de un formulario
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr class="my-4 my-md-5">
+
+    <!-- ESTRUCTURA -->
+    <div id="estructura" class="mb-5">
+
+        <h3 class="fw-bold mb-4 fs-5 fs-md-4">Estructura del Proyecto</h3>
+
+        <div class="card border-0 shadow-sm bg-dark text-light">
+            <div class="card-body p-3 p-md-4">
+
+                <!-- RESPONSIVE CODE BLOCK -->
+                <div class="overflow-auto">
+                    <pre class="mb-0 text-white small">
+📁 proyecto_avanzado/        Directorio raíz del sistema.
+├── 📄 server.pl             Backend central, gestiona rutas y lógica de predicción.
+├── 📄 crear_dataset.pl      Script de generación de datos sintéticos.
+├── 📄 dataset.csv           Almacén de datos en formato de texto plano (generado).
+└── 📁 web/                  Directorio para recursos del front-end.
+    ├── 📄 index.html        Interfaz de usuario principal.
+    ├── 📄 script.js         Lógica de comunicación asíncrona (Fetch API).
+    └── 📄 style.css         Definiciones estéticas y diseño responsivo.
+</pre>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="my-4 my-md-5">
+
+    <!-- REQUISITOS -->
+    <div id="requisitos" class="mb-5">
+
+        <h3 class="fw-bold mb-4 fs-5 fs-md-4">Instalación de software base</h3>
+
+        <div class="row g-3 g-md-4 mb-4">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-8">
+                    <p> El componente central es SWI-Prolog, una de las implementaciones más
+                        completas y mantenidas del lenguaje. Se recomienda la versión 9.3.x o superior. Para la edición
+                        de código, Visual Studio Code (VS Code) es la herramienta predilecta.</p>
+                      <p>Es necesario instalar las siguientes extensiones para las herramientas que se utilizarán en este proyecto:</p>
+                    </div>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-3 g-md-4">
+
+            <div class="col">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="fs-1 mb-3"><img src="/imagenes/prolog.jpg" height="100px" height="100px" alt="Prolog"></div>
+                        <h5 class="fw-bold fs-6 fs-md-5">Prolog y VSC</h5>
+                        <ul class="text-start list-unstyled small text-secondary">
+                            <li>• VSC-Prolog</li>
+                            <li>• New-VSC-Prolog</li>
+                        </ul>
+                        <div>
+                            <p>En la configuración del usuario (settings.json), se debe especificar la ruta del binario de swipl para habilitar funciones de autocompletado y validación de reglas en tiempo real.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="fs-1 mb-3 text-warning"><img src="/imagenes/js.jpg" height="100px" height="100px" alt="Java Script"></div>
+                        <h5 class="fw-bold fs-6 fs-md-5">JavaScript</h5>
+                        <ul class="text-start list-unstyled small text-secondary">
+                            <li>• Prettier</li>
+                            <li>• ES6 snippets</li>
+                        </ul>
+                         <div>
+                            <p>Javascript será el puente entre las acciones del usuario y los servicios lógicos de Prolog.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="fs-1 mb-3 text-danger"><img src="/imagenes/html.jpg" height="100px" height="100px"  alt="html"></div>
+                        <h5 class="fw-bold fs-6 fs-md-5">HTML CSS</h5>
+                        <ul class="text-start list-unstyled small text-secondary">
+                            <li>• Auto Rename Tag</li>
+                            <li>• HTML CSS Support</li>
+                            <li>• HTML/CSS/JavaScript Snippets</li>
+                            <li>• CSS Navigation</li>
+                        </ul>
+                        <div>
+                            <p>Diseñaremos una dashboard profesional con dos columnas: una para la carga y visualización de datos, y otra para el formulario de consulta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="alert alert-light border-0 shadow-sm mt-4 mt-md-5 small">
+            <p class="mb-1 fw-bold text-dark">Antes de continuar:</p>
+            <p class="mb-0 fw-bold ">Asegúrate de que tienes las instalaciones y creadas las carpetas sugeridas
+                y archivos de la estructura del proyecto, excepto el llamado "dataset.csv" que generarás en la siguiente sección.</p>
+            </p>
+        </div>
+
+    </div>
+
+</div>
