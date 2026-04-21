@@ -1,4 +1,5 @@
 let paginaActual = 0;
+
 function cargarComponente(id, ruta) {
     fetch(ruta)
         .then(res => {
@@ -19,7 +20,7 @@ function cargarComponente(id, ruta) {
 }
 
 function cargarVista(vista) {
-    return fetch(`vistas/${vista}.html`) // 🔥 RETURN
+    return fetch(`vistas/${vista}.html`) //  RETURN
         .then(res => res.text())
         .then(html => {
             const contenedor = document.getElementById("contenido");
@@ -37,7 +38,7 @@ function cargarVista(vista) {
 // INICIALIZACIÓN
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 🔥 MISMO menú en ambos lados
+    //  MISMO menú en ambos lados
     cargarComponente("menu-desktop", "componentes/menu.html");
     cargarComponente("menu-mobile", "componentes/menu.html");
 
@@ -59,16 +60,16 @@ document.addEventListener("click", (e) => {
 
 
 const paginas = [
-    { id: "introduccion", anchor: "aprenderas", titulo: "👋 Aprenderás...", header: "Para iniciar: conoce prerrequisitos y configuración" },
-    { id: "introduccion", anchor: "requisitos", titulo: "🛠️ Requisitos", header: "Antes de comenzar: prepara tu entorno de desarrollo" },
-    { id: "introduccion", anchor: "estructura", titulo: "📁 Estructura", header: "Explora cómo está organizado el proyecto" },
+    { id: "introduccion", anchor: "aprenderas", titulo: " Aprenderás...", header: "Para iniciar: conoce prerrequisitos y configuración" },
+    { id: "introduccion", anchor: "requisitos", titulo: " Requisitos", header: "Antes de comenzar: prepara tu entorno de desarrollo" },
+    { id: "introduccion", anchor: "estructura", titulo: " Estructura", header: "Explora cómo está organizado el proyecto" },
 
-    { id: "guardar_dataset", titulo: "📊 guardar_dataset.pl", header: "Genera y guarda datos para el sistema" },
-    { id: "server", titulo: "🖥️ server.pl", header: "Configura el backend y expone servicios en Prolog" },
+    { id: "guardar_dataset", titulo: " guardar_dataset.pl", header: "Genera y guarda datos para el sistema" },
+    { id: "server", titulo: " server.pl", header: "Configura el backend y expone servicios en Prolog" },
 
-    { id: "crear_index", titulo: "📄 crear_index.html", header: "Construye la interfaz principal del sistema" },
-    { id: "crear_style", titulo: "🎨 crear_style.css", header: "Diseña el estilo visual y la experiencia de usuario" },
-    { id: "crear_script", titulo: "⚙️ crear_script.js", header: "Programa la lógica y comunicación con el backend" },
+    { id: "crear_index", titulo: " crear_index.html", header: "Construye la interfaz principal del sistema" },
+    { id: "crear_style", titulo: " crear_style.css", header: "Diseña el estilo visual y la experiencia de usuario" },
+    { id: "crear_script", titulo: " crear_script.js", header: "Programa la lógica y comunicación con el backend" },
 
     { id: "probar", titulo: "▶️ Probar sistema", header: "Haz pruebas reales del sistema completo" }
 ];
@@ -82,10 +83,10 @@ function irAPagina(index) {
 
     cargarVista(pagina.id).then(() => {
 
-        // 🔥 actualizar header dinámico
+        //  actualizar header dinámico
         actualizarHeader(pagina.header);
 
-        // 🔥 scroll a anchor si existe
+        //  scroll a anchor si existe
         setTimeout(() => {
             if (pagina.anchor) {
                 const el = document.getElementById(pagina.anchor);

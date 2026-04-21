@@ -1,331 +1,415 @@
-<div class="card shadow-sm border-0 mb-4">
-    <div class="card-body">
+<div class="container-fluid px-3 px-md-4 py-4 py-md-5">
 
-        
-    <!-- TÍTULO -->
-    <h2 class="fw-bold text-center mb-4">
-        Interfaz Web (Frontend)
-    </h2>
-       
+    <!-- INTRO -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
 
-        <p>
-            En esta sección construiremos la interfaz gráfica del sistema.
-            Aquí el usuario podrá cargar datos, visualizar resultados y consultar predicciones.
-        </p>
+            <h2 class="fw-bold text-center mb-3">
+                Interfaz Web (Frontend)
+            </h2>
 
-        <ul class="mb-3">
-            <li>📁 Carga de archivos CSV</li>
-            <li>📊 Visualización con gráficas</li>
-            <li>🧠 Interacción con el backend</li>
-            <li>🩺 Formulario de predicción</li>
-        </ul>
+            <p>
+                En esta sección se construye la interfaz completa del sistema, donde el usuario puede:
+            </p>
 
-        <div class="alert alert-warning border-0 mb-0">
-            ⚠️ Este archivo corresponde a: <strong>web/index.html</strong>
+            <ul>
+                <li> Cargar archivos CSV</li>
+                <li> Visualizar resultados en gráficas</li>
+                <li> Consultar predicciones</li>
+                <li> Entender la lógica del sistema</li>
+            </ul>
+
+            <div class="alert alert-warning border-0 mb-0">
+                 Archivo: <strong>web/index.html</strong>
+            </div>
+
         </div>
-
     </div>
-</div>
 
-<!-- BLOQUE 1 -->
-<div class="card shadow-sm mb-3">
-    <div class="card-body">
+    <!-- BLOQUE 1 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
 
-        <h6 class="fw-bold">📄 Estructura base HTML + librerías</h6>
+            <h6 class="fw-bold"> Estructura base HTML</h6>
 
-        <div class="row">
+            <div class="row">
 
-            <!-- CÓDIGO -->
-            <div class="col-lg-6">
-                <button class="btn btn-sm btn-light float-end mb-2"
-                        onclick="copiarCodigo('html1', this)">📋 Copiar</button>
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2" onclick="copiarCodigo('h1', this)">📋
+                        Copiar</button>
 
-<pre id="html1" class="bg-dark text-light p-3 rounded small">
+                    <pre id="h1" class="bg-dark text-light p-3 rounded small">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
+
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Prolog Data Science&lt;/title&gt;
+    &lt;title&gt;Modelo predictivo con Prolog y JS&lt;/title&gt;
 
+    &lt;!-- Bootstrap --&gt;
     &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
-    &lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
 
-    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;!-- Chart.js --&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
 &lt;/head&gt;
 </pre>
-            </div>
+                </div>
 
-            <!-- EXPLICACIÓN -->
-            <div class="col-lg-6">
-                <div class="small text-muted">
+                <div class="col-lg-6 small text-muted">
 
-                    <p><strong>¿Qué hace este bloque?</strong></p>
+                    <p><strong>¿Qué hace?</strong></p>
+
                     <p>
-                        Define la base del documento HTML y carga las librerías necesarias para el diseño y visualización de datos.
+                        Define la base del documento HTML y carga librerías externas.
                     </p>
 
                     <ul>
-                        <li><strong>Bootstrap</strong>: diseño responsive</li>
-                        <li><strong>Chart.js</strong>: gráficas dinámicas</li>
-                        <li><strong>style.css</strong>: estilos personalizados</li>
+                        <li>Bootstrap → diseño responsive</li>
+                        <li>Chart.js → visualización de datos</li>
                     </ul>
 
-                    <div class="doc-link">
-                        <span>🔗</span>
-                        <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">
-                            Documentación Bootstrap
-                        </a>
-                    </div>
+                    🔗 <a href="https://getbootstrap.com/docs/5.3/" target="_blank">Bootstrap</a><br>
+                    🔗 <a href="https://www.chartjs.org/docs/latest/" target="_blank">Chart.js</a>
 
                 </div>
+
             </div>
-
         </div>
-
     </div>
-</div>
 
-<!-- BLOQUE 2 -->
-<div class="card shadow-sm mb-3">
-    <div class="card-body">
+    <!-- BLOQUE 2 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
 
-        <h6 class="fw-bold">📊 Panel de carga de datos</h6>
+            <h6 class="fw-bold"> Contenedor principal</h6>
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-lg-6">
-                <button class="btn btn-sm btn-light float-end mb-2"
-                        onclick="copiarCodigo('html2', this)">📋 Copiar</button>
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2" onclick="copiarCodigo('h2', this)">📋
+                        Copiar</button>
 
-<pre id="html2" class="bg-dark text-light p-3 rounded small">
-&lt;div class="col-md-8 p-2"&gt;
-    &lt;div class="card shadow-sm h-100"&gt;
-        &lt;div class="card-body text-center"&gt;
+                    <pre id="h2" class="bg-dark text-light p-3 rounded small">
+&lt;body class="bg-light"&gt;
 
-            &lt;h5 class="text-start"&gt;📁 Cargar Datos&lt;/h5&gt;
+&lt;div class="container-fluid min-vh-100 py-3"&gt;
+    &lt;div class="row w-100"&gt;
+</pre>
+                </div>
 
-            &lt;div class="input-group my-3"&gt;
-                &lt;input type="file" id="fileInput" class="form-control"&gt;
-                &lt;button class="btn btn-primary" onclick="subirCSV()"&gt;
-                    Analizar CSV
-                &lt;/button&gt;
-            &lt;/div&gt;
+                <div class="col-lg-6 small text-muted">
 
-            &lt;canvas id="grafica"&gt;&lt;/canvas&gt;
-            &lt;div id="resultado"&gt;&lt;/div&gt;
+                    <p>
+                        Define el layout principal usando Bootstrap Grid.
+                    </p>
 
-        &lt;/div&gt;
+                    <ul>
+                        <li>container-fluid → ancho completo</li>
+                        <li>row → sistema de columnas</li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 3 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold"> Panel izquierdo (CSV + gráfica)</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2" onclick="copiarCodigo('h3', this)">📋
+                        Copiar</button>
+
+                    <pre id="h3" class="bg-dark text-light p-3 rounded small">
+&lt;div class="col-lg-8 col-md-7 p-3"&gt;
+
+    &lt;div class="card h-100 shadow"&gt;
+        &lt;div class="card-body d-flex flex-column"&gt;
+
+            &lt;h4 class="mb-3"&gt;Carga archivo CSV&lt;/h4&gt;
+
+            &lt;div class="row g-2 mb-3"&gt;
+                &lt;div class="col-md-6"&gt;
+                    &lt;input type="file" id="fileInput" class="form-control"&gt;
+</pre>
+                </div>
+
+                <div class="col-lg-6 small text-muted">
+
+                    <p>
+                        Sección donde el usuario carga datos.
+                    </p>
+
+                    <ul>
+                        <li>Input tipo file</li>
+                        <li>Diseño en columnas</li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 4 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold"> Toast (notificaciones)</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2" onclick="copiarCodigo('h4', this)">📋
+                        Copiar</button>
+
+                    <pre id="h4" class="bg-dark text-light p-3 rounded small">
+&lt;div id="toastMsg" class="toast mt-2 text-bg-success border-0" role="alert"
+    style="display:none;"&gt;
+
+    &lt;div class="d-flex"&gt;
+        &lt;div class="toast-body"&gt;&lt;/div&gt;
+        &lt;button type="button" class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</pre>
+                </div>
+
+                <div class="col-lg-6 small text-muted">
+
+                    <p>
+                        Muestra mensajes dinámicos al usuario (éxito/error).
+                    </p>
+
+                    🔗 <a href="https://getbootstrap.com/docs/5.3/components/toasts/" target="_blank">
+                        Bootstrap Toast
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 5 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold"> Gráfica y resultados</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2" onclick="copiarCodigo('h5', this)">📋
+                        Copiar</button>
+
+                    <pre id="h5" class="bg-dark text-light p-3 rounded small">
+&lt;div class="flex-grow-1"&gt;
+    &lt;canvas id="grafica"&gt;&lt;/canvas&gt;
+
+    &lt;div class="d-flex flex-column align-items-center mt-3"&gt;
+        &lt;p id="resultado" class="fw-bold mb-1"&gt;&lt;/p&gt;
+        &lt;p id="descripcionGrafica" class="text-muted small"&gt;&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-            </div>
+                </div>
 
-            <div class="col-lg-6">
-                <div class="small text-muted">
+                <div class="col-lg-6 small text-muted">
 
-                    <p><strong>¿Qué hace este bloque?</strong></p>
                     <p>
-                        Permite al usuario subir un archivo CSV y visualizar resultados mediante gráficas.
+                        Visualiza datos usando Chart.js.
                     </p>
 
                     <ul>
-                        <li>Input tipo archivo</li>
-                        <li>Botón que envía datos al backend</li>
-                        <li>Canvas para gráficas</li>
+                        <li>Canvas → gráfica</li>
+                        <li>Texto → interpretación</li>
                     </ul>
 
-                    <div class="doc-link">
-                        <span>🔗</span>
-                        <a href="https://www.chartjs.org/docs/latest/" target="_blank">
-                            Documentación Chart.js
-                        </a>
-                    </div>
-
                 </div>
+
             </div>
-
         </div>
-
     </div>
-</div>
 
-<!-- BLOQUE 3 -->
-<div class="card shadow-sm mb-3">
-    <div class="card-body">
+    <!-- BLOQUE 6 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
 
-        <h6 class="fw-bold">🩺 Formulario de predicción</h6>
+            <h6 class="fw-bold"> Panel derecho (predicción)</h6>
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-lg-6">
-                <button class="btn btn-sm btn-light float-end mb-2"
-                        onclick="copiarCodigo('html3', this)">📋 Copiar</button>
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2" onclick="copiarCodigo('h6', this)">📋
+                        Copiar</button>
 
-<pre id="html3" class="bg-dark text-light p-3 rounded small">
-&lt;div class="col-md-4 p-2"&gt;
-    &lt;div class="card shadow-sm h-100"&gt;
-        &lt;div class="card-body"&gt;
+                    <pre id="h6" class="bg-dark text-light p-3 rounded small">
+&lt;div class="col-lg-4 col-md-5 p-3"&gt;
 
-            &lt;h5&gt;🩺 Consultar Riesgo&lt;/h5&gt;
+    &lt;div class="card h-100 shadow"&gt;
+        &lt;div class="card-body d-flex flex-column"&gt;
 
-            &lt;input type="number" id="edad" class="form-control mb-2"&gt;
-
-            &lt;select id="fuma" class="form-select mb-2"&gt;
-                &lt;option value="1"&gt;Sí&lt;/option&gt;
-                &lt;option value="0"&gt;No&lt;/option&gt;
-            &lt;/select&gt;
-
-            &lt;button class="btn btn-danger w-100" onclick="predecir()"&gt;
-                Calcular Diagnóstico
+            &lt;button class="btn btn-info mb-3"
+                data-bs-toggle="modal"
+                data-bs-target="#modalAyuda"&gt;
+                ❓ Más información
             &lt;/button&gt;
 
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+            &lt;h4 class="mb-3"&gt; Revisa tu estado de riesgo&lt;/h4&gt;
 </pre>
-            </div>
+                </div>
 
-            <div class="col-lg-6">
-                <div class="small text-muted">
+                <div class="col-lg-6 small text-muted">
 
-                    <p><strong>¿Qué hace este bloque?</strong></p>
                     <p>
-                        Permite al usuario ingresar datos manualmente para obtener una predicción en tiempo real.
+                        Panel de interacción del usuario con el modelo.
                     </p>
 
-                    <ul>
-                        <li>Formulario interactivo</li>
-                        <li>Envía datos al backend</li>
-                        <li>Recibe diagnóstico</li>
-                    </ul>
+                </div>
 
-                    <div class="doc-link">
-                        <span>🔗</span>
-                        <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/input" target="_blank">
-                            Inputs HTML
-                        </a>
-                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 7 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold"> Formulario completo</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2" onclick="copiarCodigo('h7', this)">📋
+                        Copiar</button>
+
+                    <pre id="h7" class="bg-dark text-light p-3 rounded small">
+&lt;div class="row g-3"&gt;
+
+    &lt;input type="number" id="edad" class="form-control"&gt;
+
+    &lt;select id="fuma" class="form-select"&gt;
+        &lt;option value="0"&gt;No&lt;/option&gt;
+        &lt;option value="1"&gt;Sí&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;select id="alcohol" class="form-select"&gt;
+        &lt;option value="0"&gt;No&lt;/option&gt;
+        &lt;option value="1"&gt;Sí&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;select id="ejercicio" class="form-select"&gt;
+        &lt;option value="0"&gt;No&lt;/option&gt;
+        &lt;option value="1"&gt;Sí&lt;/option&gt;
+    &lt;/select&gt;
+
+&lt;/div&gt;
+</pre>
+                </div>
+
+                <div class="col-lg-6 small text-muted">
+
+                    <p>
+                        Captura datos del usuario para enviar al backend.
+                    </p>
 
                 </div>
+
             </div>
-
         </div>
-
     </div>
-</div>
 
-<!-- BLOQUE 4 -->
-<div class="card shadow-sm mb-3">
-    <div class="card-body">
+    <!-- BLOQUE 8 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
 
-        <h6 class="fw-bold">❓ Modal de ayuda</h6>
+            <h6 class="fw-bold"> Modal de ayuda</h6>
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-lg-6">
-                <button class="btn btn-sm btn-light float-end mb-2"
-                        onclick="copiarCodigo('html4', this)">📋 Copiar</button>
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2" onclick="copiarCodigo('h8', this)">📋
+                        Copiar</button>
 
-<pre id="html4" class="bg-dark text-light p-3 rounded small">
-&lt;div class="modal fade" id="modalAyuda"&gt;
-    &lt;div class="modal-dialog"&gt;
+                    <pre id="h8" class="bg-dark text-light p-3 rounded small">
+&lt;div class="modal fade" id="modalAyuda" tabindex="-1"&gt;
+    &lt;div class="modal-dialog modal-lg"&gt;
         &lt;div class="modal-content"&gt;
 
             &lt;div class="modal-header"&gt;
-                &lt;h5&gt;Lógica&lt;/h5&gt;
+                &lt;h5 class="modal-title"&gt;Información del Modelo&lt;/h5&gt;
             &lt;/div&gt;
 
             &lt;div class="modal-body"&gt;
-                Puntaje = Edad * 0.2 + ...
+                Puntaje = (Edad × 0.2) + ...
             &lt;/div&gt;
 
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-            </div>
+                </div>
 
-            <div class="col-lg-6">
-                <div class="small text-muted">
+                <div class="col-lg-6 small text-muted">
 
-                    <p><strong>¿Qué hace este bloque?</strong></p>
                     <p>
-                        Muestra una ventana emergente con la explicación de la lógica del sistema.
+                        Explica cómo funciona el modelo predictivo.
                     </p>
 
-                    <ul>
-                        <li>Componente Bootstrap</li>
-                        <li>Información contextual</li>
-                    </ul>
-
-                    <div class="doc-link">
-                        <span>🔗</span>
-                        <a href="https://getbootstrap.com/docs/5.3/components/modal/" target="_blank">
-                            Bootstrap Modal
-                        </a>
-                    </div>
-
                 </div>
+
             </div>
-
         </div>
-
     </div>
-</div>
 
-<!-- BLOQUE 5 -->
-<div class="card shadow-sm mb-3">
-    <div class="card-body">
+    <!-- BLOQUE FINAL -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
 
-        <h6 class="fw-bold">⚙️ Scripts</h6>
+            <h6 class="fw-bold"> Scripts finales</h6>
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-lg-6">
-                <button class="btn btn-sm btn-light float-end mb-2"
-                        onclick="copiarCodigo('html5', this)">📋 Copiar</button>
+                <div class="col-lg-6">
+                    <button class="btn btn-sm btn-light float-end mb-2" onclick="copiarCodigo('h9', this)">📋
+                        Copiar</button>
 
-<pre id="html5" class="bg-dark text-light p-3 rounded small">
+                    <pre id="h9" class="bg-dark text-light p-3 rounded small">
 &lt;script src="script.js"&gt;&lt;/script&gt;
 &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-            </div>
+                </div>
 
-            <div class="col-lg-6">
-                <div class="small text-muted">
+                <div class="col-lg-6 small text-muted">
 
-                    <p><strong>¿Qué hace este bloque?</strong></p>
                     <p>
-                        Carga los scripts necesarios para la interacción del sistema.
+                        Activa la lógica del frontend y los componentes de Bootstrap.
                     </p>
 
-                    <ul>
-                        <li><strong>script.js</strong>: lógica frontend</li>
-                        <li><strong>Bootstrap JS</strong>: componentes dinámicos</li>
-                    </ul>
-
-                    <div class="doc-link">
-                        <span>🔗</span>
-                        <a href="https://getbootstrap.com/docs/5.3/getting-started/javascript/" target="_blank">
-                            Bootstrap JS
-                        </a>
-                    </div>
-
                 </div>
+
             </div>
-
         </div>
-
     </div>
-</div>
 
-<div class="alert alert-success mt-4 border-0 shadow-sm">
-    🎉 Has construido una interfaz completa conectada con Prolog:
-    <ul class="mb-0 mt-2">
-        <li>Subida de datos</li>
-        <li>Visualización</li>
-        <li>Predicción en tiempo real</li>
-    </ul>
+    <div class="alert alert-success mt-4 border-0 shadow-sm">
+        Interfaz completa lista:
+        <ul class="mb-0 mt-2">
+            <li>Visualización de datos</li>
+            <li>Predicción en tiempo real</li>
+            <li>Comunicación con Prolog</li>
+        </ul>
+    </div>
+
 </div>

@@ -1,272 +1,424 @@
-<div class="card shadow-sm border-0 mb-4">
-    <div class="card-body">
+<div class="container-fluid px-3 px-md-4 py-4 py-md-5">
 
-            <!-- TÍTULO -->
-    <h2 class="fw-bold text-center mb-4">
-        Lógica del Cliente (script.js)
-    </h2>
-      
-        <p>
-            Este archivo se encarga de la interacción entre el usuario y el backend en Prolog.
-            Controla el envío de datos, la recepción de respuestas y la visualización dinámica.
-        </p>
+    <!-- INTRO -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
 
-        <ul class="mb-3">
-            <li>📡 Comunicación con el servidor</li>
-            <li>📁 Envío de archivos CSV</li>
-            <li>🧠 Solicitud de predicciones</li>
-            <li>📊 Renderizado de gráficas</li>
-        </ul>
+            <h2 class="fw-bold text-center mb-4">
+                Lógica del Cliente (script.js)
+            </h2>
 
-        <div class="alert alert-warning border-0 mb-0">
-            ⚠️ Este archivo corresponde a: <strong>web/script.js</strong>
+            <p>
+                Este archivo controla la interacción entre la interfaz web y el backend en Prolog.
+                Se encarga de validar datos, enviar solicitudes HTTP, procesar respuestas
+                y actualizar dinámicamente la interfaz.
+            </p>
+
+            <ul>
+                <li>Comunicación cliente-servidor</li>
+                <li>Validación de datos</li>
+                <li>Renderizado dinámico</li>
+                <li>Manejo de errores</li>
+            </ul>
+
+            <div class="alert alert-warning border-0 mb-0">
+                Archivo: <strong>web/script.js</strong>
+            </div>
+
         </div>
-
     </div>
-</div>
 
-<!-- BLOQUE 1 -->
-<div class="card shadow-sm mb-3">
-    <div class="card-body">
+    <!-- BLOQUE 1 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
 
-        <h6 class="fw-bold">🧠 Variable global de gráfica</h6>
+            <h6 class="fw-bold">Variable global de gráfica</h6>
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-lg-6">
-                <button class="btn btn-sm btn-light float-end mb-2"
-                        onclick="copiarCodigo('js1', this)">📋 Copiar</button>
-
-<pre id="js1" class="bg-dark text-light p-3 rounded small">
+                <div class="col-lg-6">
+<pre class="bg-dark text-light p-3 rounded small">
 let chart = null;
 </pre>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="small text-muted">
-
-                    <p><strong>¿Qué hace este bloque?</strong></p>
-                    <p>
-                        Mantiene una referencia global de la gráfica actual para poder actualizarla
-                        o eliminarla antes de renderizar una nueva.
-                    </p>
-
-                    <ul>
-                        <li>Evita duplicar gráficas</li>
-                        <li>Permite usar <code>destroy()</code></li>
-                    </ul>
-
-                    <div class="doc-link">
-                        <span>🔗</span>
-                        <a href="https://www.chartjs.org/docs/latest/developers/api.html" target="_blank">
-                            API Chart.js
-                        </a>
-                    </div>
-
                 </div>
-            </div>
 
-        </div>
-
-    </div>
-</div>
-
-<!-- BLOQUE 2 -->
-<div class="card shadow-sm mb-3">
-    <div class="card-body">
-
-        <h6 class="fw-bold">📁 Subida de CSV al servidor</h6>
-
-        <div class="row">
-
-            <div class="col-lg-6">
-                <button class="btn btn-sm btn-light float-end mb-2"
-                        onclick="copiarCodigo('js2', this)">📋 Copiar</button>
-
-<pre id="js2" class="bg-dark text-light p-3 rounded small">
-async function subirCSV() {
-    const file = document.getElementById("fileInput").files[0];
-    if (!file) return alert("Selecciona un archivo primero");
-
-    const formData = new FormData();
-    formData.append("data", file);
-
-    const res = await fetch("/upload", { method: "POST", body: formData });
-    const data = await res.json();
-
-    if(data.status === "ok") alert("¡Prolog ha cargado el dataset!");
-}
-</pre>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="small text-muted">
-
-                    <p><strong>¿Qué hace este bloque?</strong></p>
+                <div class="col-lg-6 small text-muted">
                     <p>
-                        Envía el archivo CSV al servidor Prolog utilizando una petición HTTP POST.
+                        Se utiliza para mantener una referencia única de la gráfica.
+                        Esto permite destruir la gráfica anterior antes de crear una nueva,
+                        evitando duplicados y fugas de memoria.
                     </p>
-
-                    <ul>
-                        <li>Uso de <strong>FormData</strong></li>
-                        <li>Petición con <strong>fetch</strong></li>
-                        <li>Respuesta en JSON</li>
-                    </ul>
-
-                    <div class="doc-link">
-                        <span>🔗</span>
-                        <a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API" target="_blank">
-                            Fetch API
-                        </a>
-                    </div>
-
                 </div>
+
             </div>
-
         </div>
-
     </div>
-</div>
 
-<!-- BLOQUE 3 -->
-<div class="card shadow-sm mb-3">
-    <div class="card-body">
+    <!-- BLOQUE 2 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
 
-        <h6 class="fw-bold">🧠 Solicitud de predicción</h6>
+            <h6 class="fw-bold">Función de predicción</h6>
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-lg-6">
-                <button class="btn btn-sm btn-light float-end mb-2"
-                        onclick="copiarCodigo('js3', this)">📋 Copiar</button>
-
-<pre id="js3" class="bg-dark text-light p-3 rounded small">
+                <div class="col-lg-6">
+<pre class="bg-dark text-light p-3 rounded small">
 async function predecir() {
-    const inputs = {
-        edad: Number(document.getElementById("edad").value),
-        fuma: Number(document.getElementById("fuma").value),
-        alcohol: Number(document.getElementById("alcohol").value),
-        ejercicio: Number(document.getElementById("ejercicio").value)
-    };
 
-    const res = await fetch("/predict", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(inputs)
-    });
+    const edad = Number(document.getElementById("edad")?.value);
+    const fuma = Number(document.getElementById("fuma")?.value);
+    const alcohol = Number(document.getElementById("alcohol")?.value);
+    const ejercicio = Number(document.getElementById("ejercicio")?.value);
 
-    const data = await res.json();
-    
-    document.getElementById("resultado").innerText =
-        `Nivel de Riesgo: ${data.riesgo.toUpperCase()}`;
+    if ([edad, fuma, alcohol, ejercicio].some(v => isNaN(v))) {
+        mostrarMensaje("Completa todos los campos correctamente");
+        return;
+    }
 
-    actualizarGrafica(data.puntaje);
+    try {
+        const res = await fetch("/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ edad, fuma, alcohol, ejercicio })
+        });
+
+        const data = await res.json();
+
+        if (!data || !data.prob) {
+            mostrarMensaje("❌ Error en respuesta del servidor");
+            return;
+        }
+
+
+        const prob = data.prob;
+
+        const mayor = obtenerMayor(prob);
+
+        mostrarMensaje(
+            `Riesgo: ${data.riesgo}\n` +
+            `Puntaje: ${data.puntaje.toFixed(2)}\n` +
+            `Dominante: ${mayor.tipo} (${mayor.valor}%)`
+        );
+
+        mostrarGrafica(prob);
+
+    } catch (err) {
+        console.error(err);
+        mostrarMensaje("❌ Error en predicción");
+    }
 }
 </pre>
-            </div>
+                </div>
 
-            <div class="col-lg-6">
-                <div class="small text-muted">
+                <div class="col-lg-6 small text-muted">
 
-                    <p><strong>¿Qué hace este bloque?</strong></p>
+                    <p><strong>Responsabilidad principal</strong></p>
                     <p>
-                        Recoge los datos del formulario y los envía al backend para obtener
-                        una predicción de riesgo.
+                        Coordina todo el flujo de predicción: captura datos, valida,
+                        envía al backend y procesa la respuesta.
                     </p>
 
+                    <p><strong>Aspectos importantes</strong></p>
                     <ul>
-                        <li>Lectura de inputs HTML</li>
-                        <li>Conversión a JSON</li>
-                        <li>Actualización del DOM</li>
+                        <li>Uso de <code>optional chaining (?.)</code> para evitar errores</li>
+                        <li>Validación con <code>isNaN</code></li>
+                        <li>Uso de <code>fetch</code> con JSON</li>
+                        <li>Manejo de errores con <code>try/catch</code></li>
                     </ul>
 
-                    <div class="doc-link">
-                        <span>🔗</span>
-                        <a href="https://developer.mozilla.org/es/docs/Web/API/Document/getElementById" target="_blank">
-                            DOM API
-                        </a>
-                    </div>
+                    <p>
+                        Este bloque representa el flujo completo cliente → servidor → cliente.
+                    </p>
 
                 </div>
+
             </div>
-
         </div>
-
     </div>
-</div>
 
-<!-- BLOQUE 4 -->
-<div class="card shadow-sm mb-3">
-    <div class="card-body">
+    <!-- BLOQUE 3 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
 
-        <h6 class="fw-bold">📊 Renderizado de gráfica</h6>
+            <h6 class="fw-bold">Determinación del valor dominante</h6>
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-lg-6">
-                <button class="btn btn-sm btn-light float-end mb-2"
-                        onclick="copiarCodigo('js4', this)">📋 Copiar</button>
+                <div class="col-lg-6">
+<pre class="bg-dark text-light p-3 rounded small">
+function obtenerMayor(prob) {
+    const arr = [
+        { tipo: "Alto", valor: prob.alto },
+        { tipo: "Medio", valor: prob.medio },
+        { tipo: "Bajo", valor: prob.bajo }
+    ];
 
-<pre id="js4" class="bg-dark text-light p-3 rounded small">
-function actualizarGrafica(puntaje) {
-    const ctx = document.getElementById("grafica").getContext("2d");
+    return arr.sort((a, b) => b.valor - a.valor)[0];
+}
+</pre>
+                </div>
+
+                <div class="col-lg-6 small text-muted">
+
+                    <p>
+                        Convierte el objeto de probabilidades en un arreglo para poder ordenarlo.
+                    </p>
+
+                    <p>
+                        Se utiliza <code>sort()</code> para ordenar de mayor a menor y
+                        se selecciona el primer elemento.
+                    </p>
+
+                    <p>
+                        Esto permite identificar el riesgo dominante de forma sencilla.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 4 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">Renderizado de gráfica</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+<pre class="bg-dark text-light p-3 rounded small">
+function mostrarGrafica(prob) {
+
     if (chart) chart.destroy();
 
-    const pBajo = puntaje < 40 ? 100 - puntaje : 10;
-    const pAlto = puntaje > 60 ? puntaje : 5;
-    const pMedio = 100 - (pBajo + pAlto);
+    const ctx = document.getElementById("grafica").getContext("2d");
 
     chart = new Chart(ctx, {
-        type: 'bar',
+        type: "bar",
         data: {
             labels: ["Alto", "Medio", "Bajo"],
             datasets: [{
-                label: '% Probabilidad',
-                data: [pAlto, pMedio, pBajo],
-                backgroundColor: ["#ff5f5f", "#ffbd5f", "#5fff8b"]
+                label: "Nivel de riesgo",
+                data: [prob.alto, prob.medio, prob.bajo], // ✔ correcto
+                backgroundColor: ["#ff0000", "#ffa500", "#008000"]
             }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
         }
     });
 }
 </pre>
-            </div>
+                </div>
 
-            <div class="col-lg-6">
-                <div class="small text-muted">
+                <div class="col-lg-6 small text-muted">
 
-                    <p><strong>¿Qué hace este bloque?</strong></p>
                     <p>
-                        Genera una gráfica dinámica basada en el puntaje calculado,
-                        representando probabilidades visuales.
+                        Genera una gráfica tipo barra con Chart.js utilizando los datos recibidos.
                     </p>
 
                     <ul>
-                        <li>Uso de Chart.js</li>
-                        <li>Renderizado dinámico</li>
-                        <li>Visualización de datos</li>
+                        <li>Se destruye la gráfica anterior</li>
+                        <li>Se usa contexto 2D del canvas</li>
+                        <li>Se configuran escalas y límites</li>
                     </ul>
 
-                    <div class="doc-link">
-                        <span>🔗</span>
-                        <a href="https://www.chartjs.org/docs/latest/charts/bar.html" target="_blank">
-                            Gráficas tipo Bar
-                        </a>
-                    </div>
+                    <p>
+                        La gráfica representa directamente la salida del backend.
+                    </p>
 
                 </div>
+
             </div>
-
         </div>
-
     </div>
-</div>
 
-<div class="alert alert-success mt-4 border-0 shadow-sm">
-    🎉 Has implementado la lógica completa del cliente:
-    <ul class="mb-0 mt-2">
-        <li>Comunicación con Prolog</li>
-        <li>Interacción con el usuario</li>
-        <li>Visualización dinámica</li>
-        <li>Experiencia interactiva completa</li>
-    </ul>
+    <!-- BLOQUE 5 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">Actualización de mensajes</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+<pre class="bg-dark text-light p-3 rounded small">
+function mostrarMensaje(msg) {
+    const el = document.getElementById("resultado");
+    if (el) el.innerText = msg;
+}
+</pre>
+                </div>
+
+                <div class="col-lg-6 small text-muted">
+
+                    <p>
+                        Actualiza dinámicamente el contenido del DOM para mostrar resultados.
+                    </p>
+
+                    <p>
+                        Se valida que el elemento exista antes de modificarlo.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 6 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">Sistema de notificaciones (Toast)</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+<pre class="bg-dark text-light p-3 rounded small">
+function mostrarToast(mensaje, tipo = "success") {
+    const toastEl = document.getElementById("toastMsg");
+
+    // Mostrar el contenedor (porque estaba oculto)
+    toastEl.style.display = "block";
+
+    // Cambiar mensaje
+    toastEl.querySelector(".toast-body").innerText = mensaje;
+
+    // Cambiar color
+    toastEl.className = `toast mt-2 text-bg-${tipo} border-0`;
+
+    const toast = new bootstrap.Toast(toastEl, {
+        delay: 3000
+    });
+
+    toast.show();
+}
+</pre>
+                </div>
+
+                <div class="col-lg-6 small text-muted">
+
+                    <p>
+                        Implementa notificaciones visuales usando Bootstrap.
+                    </p>
+
+                    <ul>
+                        <li>Cambia contenido dinámicamente</li>
+                        <li>Permite distintos tipos (success, danger, etc.)</li>
+                        <li>Controla tiempo de visualización</li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 7 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">Evento de carga de archivo</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+<pre class="bg-dark text-light p-3 rounded small">
+document.getElementById("fileInput")
+    .addEventListener("change", subirCSV);
+</pre>
+                </div>
+
+                <div class="col-lg-6 small text-muted">
+
+                    <p>
+                        Escucha cambios en el input file y ejecuta automáticamente la función de subida.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOQUE 8 -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h6 class="fw-bold">Subida de CSV</h6>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+<pre class="bg-dark text-light p-3 rounded small">
+async function subirCSV() {
+    const file = document.getElementById("fileInput")?.files?.[0];
+
+    if (!file) {
+        alert("Selecciona un archivo primero");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("data", file);
+
+    try {
+        const res = await fetch("/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await res.json();
+
+        if (data?.status === "ok") {
+            mostrarToast("CSV cargado correctamente ✅", "success");
+        } else {
+            mostrarToast("Error al subir archivo ❌", "danger");
+        }
+
+    } catch (err) {
+        console.error(err);
+        mostrarToast("Error en upload ❌", "danger");
+    }
+}
+</pre>
+                </div>
+
+                <div class="col-lg-6 small text-muted">
+
+                    <p>
+                        Envía el archivo CSV al backend utilizando FormData.
+                    </p>
+
+                    <ul>
+                        <li>Uso de <code>fetch</code> sin headers (automático)</li>
+                        <li>Manejo de errores</li>
+                        <li>Uso de notificaciones visuales</li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-success mt-4 border-0 shadow-sm">
+        Se ha implementado completamente la lógica del cliente:
+        <ul class="mb-0 mt-2">
+            <li>Validación de datos</li>
+            <li>Comunicación con backend</li>
+            <li>Visualización dinámica</li>
+            <li>Manejo de errores</li>
+        </ul>
+    </div>
+
 </div>
